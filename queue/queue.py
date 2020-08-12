@@ -125,53 +125,56 @@ class LinkedList:
         return max_value
        
 
-class Queue:
-    def __init__(self):
-        self.size = 0
-        self.storage = LinkedList()
-    
-    def __len__(self):
-        return self.size
-
-    def enqueue(self, value):
-        self.size += 1
-        self.storage.add_to_tail(value)
-
-    def dequeue(self):
-
-        if self.size > 0:
-            self.size -= 1
-            value = self.storage.remove_head() # first in first out 
-            return value
-        return None
-
-q = Queue()
-
-q.enqueue(1)
-q.enqueue(2)
-
-# now i am going to dequeue 
-
-print(q.dequeue())
-
-
-# queue implemented with array
 # class Queue:
 #     def __init__(self):
 #         self.size = 0
-#         self.storage = []
+#         self.storage = LinkedList()
     
 #     def __len__(self):
 #         return self.size
 
 #     def enqueue(self, value):
-#         self.storage.append(value)
 #         self.size += 1
+#         self.storage.add_to_tail(value)
 
 #     def dequeue(self):
 
 #         if self.size > 0:
 #             self.size -= 1
-#             return self.storage.pop(0) # first in first out 
-
+#             value = self.storage.remove_head() # first in first out 
+#             return value
 #         return None
+
+# q = Queue()
+
+# q.enqueue(1)
+# q.enqueue(2)
+
+# now i am going to dequeue 
+
+# print(q.dequeue())
+
+
+# queue implemented with array
+
+class Queue:
+
+    def __init__(self):
+        self.size = 0
+        self.storage = []
+    
+    def __len__(self):
+        return self.size
+
+    def enqueue(self, value):
+        self.storage.append(value)
+        self.size += 1
+
+    def dequeue(self):
+
+        if self.size > 0:
+            self.size -= 1
+            return self.storage.pop(0) # first in first out 
+
+        # return None
+
