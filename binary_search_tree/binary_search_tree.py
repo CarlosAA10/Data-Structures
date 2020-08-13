@@ -39,15 +39,59 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+
+        if self.value == target: # where our recursion stops 
+            # return true or the value
+            return True
+
+
+        else:
+            # we want to compare the value of the target to the current node's value
+            # if it is less than the node, we will want to traverse through the node's
+            # left pointer 
+            if target < self.value:
+
+                if self.left:
+
+                    return self.left.contains(target)
+            
+            # if it greater than the node, we will traverse through the right side 
+            if target > self.value:
+                
+                if self.right:
+
+                    return self.right.contains(target)
+                
+        
+        return False
+
+        
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        max_so_far = self # the current node we start at 
+
+        while max_so_far.right is not None: # we dont want to reach when the node is none
+            # because when the node is none we don't have any right, left or value attr
+
+            max_so_far = max_so_far.right
+
+        return max_so_far.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value) # we must recurse but call the function on each self.value
+
+        if self.left: # we want to call it for each item left or right of the root node, and then on 
+            # so we must check for a left and also for a right and if there is, then we call the function on them
+
+            self.left.for_each(fn)
+
+        if self.right:
+
+            self.right.for_each(fn)
+
+
 
     # Part 2 -----------------------
 
@@ -80,7 +124,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)
@@ -89,14 +133,20 @@ bst.insert(6)
 bst.insert(3)
 bst.insert(4)
 bst.insert(2)
+# inserted some nodes
 
-bst.bft_print()
-bst.dft_print()
+print(bst.contains(6))
+print(bst.contains(32))
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_dft()
-print("post order")
-bst.post_order_dft()  
+print(bst.get_max())
+
+# bst.bft_print()
+# bst.dft_print()
+
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_dft()
+# print("post order")
+# bst.post_order_dft()  

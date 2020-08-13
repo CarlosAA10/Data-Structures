@@ -7,6 +7,7 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+
     def delete(self):
 
         if self.prev:
@@ -33,6 +34,7 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly.
     """
     def add_to_head(self, value):
+
         new_node = ListNode(value)
 
         if self.head is None and self.tail is None:
@@ -53,12 +55,14 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        value = self.head.value 
+        
 
         if not self.head: # there is no head to delete
-            print("There must be a head to delete")
-        else: # use my delete function above in ListNode to delete
-            self.delete(self.head)
+            return
+         # use my delete function above in ListNode to delete
+        value = self.head.value
+        self.delete(self.head)
+        
         return value 
             
     """
