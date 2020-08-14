@@ -65,10 +65,12 @@ class BSTNode:
         
         return False
 
-        
+# recursion saves each call in a stack and that is how it executes 
 
     # Return the maximum value found in the tree
+
     def get_max(self):
+
         max_so_far = self # the current node we start at 
 
         while max_so_far.right is not None: # we dont want to reach when the node is none
@@ -98,7 +100,26 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        
+        # we go through each left node, till we can't go anymore
+        # the last value is the smallest
+        # then we go through the right most side all the way, and then print those
+        # because those will be the biggest values, so they will be printed at the end
+        current_node = self
+        
+        if not current_node:
+            return 
+
+        if current_node.left:
+
+            current_node.left.in_order_print()
+
+        print(current_node.value)
+
+        if current_node.right:
+
+            current_node.right.in_order_print()
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -135,10 +156,12 @@ bst.insert(4)
 bst.insert(2)
 # inserted some nodes
 
-print(bst.contains(6))
-print(bst.contains(32))
+# print(bst.contains(6))
+# print(bst.contains(32))
 
-print(bst.get_max())
+# print(bst.get_max())
+print(bst.in_order_print())
+
 
 # bst.bft_print()
 # bst.dft_print()
